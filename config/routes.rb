@@ -3,11 +3,17 @@ Rails.application.routes.draw do
   root to: 'homes#index'
 
   get '/members', to: 'members#index', as: 'members'
-  post '/members', to: 'members#create'
+  post '/members/new', to: 'members#create'
   get '/members/new', to: 'members#new', as: 'new_members'
   get '/members/:id/edit', to: 'members#edit', as: 'edit_members'
   get '/members/:id', to: 'members#show', as: 'member'
   put '/members/:id/edit', to: 'members#update'
-  delete '/members/:id', to: 'members#destroy'
+  post '/members/:id/destroy', to: 'members#destroy', as: 'destroy_members'
+
+  get '/games', to: 'games#index', as: 'games'
+  post '/games/new', to: 'games#create'
+  get '/games/new', to: 'games#new', as: 'new_games'
+  get '/games/:uuid/edit', to: 'games#edit', as: 'edit_games'
+  get '/games/:uuid', to: 'games#show', as: 'game'
   
 end

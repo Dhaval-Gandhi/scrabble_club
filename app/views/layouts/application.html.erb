@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <%= link_to 'Home', root_path %> |
+    <%= link_to 'Members', members_path %> |
+    <%= link_to 'Games', games_path %>
+    <hr>
+    <%= yield :header %>
+    <hr>
     <%= yield %>
   </body>
 </html>

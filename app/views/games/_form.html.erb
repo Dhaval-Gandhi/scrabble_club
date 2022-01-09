@@ -1,0 +1,13 @@
+<%= form_tag '/games/new', method: :post do |f| %>
+  Select Player 1:
+  <%= select_tag "game[participants_attributes][0][member_id]", options_from_collection_for_select(@players, "id", "name"), prompt: "Select Member" %>
+  Score of Player 1:
+  <%= text_field_tag "game[participants_attributes][0][score]" %>
+  <p>
+  Select Player 2:
+  <%= select_tag "game[participants_attributes][1][member_id]", options_from_collection_for_select(@players, "id", "name"), prompt: "Select Member" %>
+  Score of Player 2:
+  <%= text_field_tag "game[participants_attributes][1][score]" %>
+  <p>
+  <%= button_tag 'Submit' %>
+<% end %>

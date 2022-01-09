@@ -2,10 +2,11 @@ class MembersController < ApplicationController
   before_action :fetch_member, only: [:show, :edit, :update, :destroy]
   
   def index
-    @members = Member.all
+    @members = Member.all.order(:name)
   end
 
   def show
+    @rank_details = @member.rank_details
   end
 
   def new
@@ -17,6 +18,11 @@ class MembersController < ApplicationController
 
   def create
     @member = Member.new(member_params)
+    if @member.save
+      redirect_to members_path
+    else
+      render :new
+    end
   end
 
   def update

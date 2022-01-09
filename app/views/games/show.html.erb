@@ -1,0 +1,36 @@
+<%= content_for :header do %>
+  <h1>Game Details</h1>
+<% end %>
+
+<table>
+  <tr>
+    <td>
+      <strong>Code : </strong>
+    </td>
+    <td>
+      <%= @game.uuid %>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td><strong>Player Name</strong></td>
+    <td><strong>Player Score</strong></td>
+    <td><strong>Player Status</strong></td>
+  </tr>
+  <% @game.participants.each do |participant| %>
+    <tr>
+      <td>
+        <%= participant.member.name %>
+      </td>
+      <td>
+        <%= participant.score %>
+      </td>
+      <td>
+        <%= participant.status %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<hr>

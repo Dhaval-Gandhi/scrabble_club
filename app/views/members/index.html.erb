@@ -1,24 +1,32 @@
-<h1>Member List</h1>
+<%= content_for :header do %>
+  <h1>Member List</h1>
+<% end %>
 
 <%= link_to 'Create Member', new_members_path %>
+<hr>
 
-<table>
-  <thead>
-    <tr>
-      <td>Name</td>
-      <td>Email</td>
-      <td>Contact</td>
-      <td>Action</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @members.each do |member| %>
+<% if @members.blank? %>
+  <p>Do not have any members.</p>
+<% else %>
+  <table>
+    <thead>
       <tr>
-        <td><%= member.name %></td>
-        <td><%= member.email %></td>
-        <td><%= member.contact %></td>
-        <td><%= link_to 'Edit', edit_members_path(member) %></td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Contact</td>
+        <td>Action</td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @members.each do |member| %>
+        <tr>
+          <td><%= link_to member.name, member_path(member) %></td>
+          <td><%= member.email %></td>
+          <td><%= member.contact %></td>
+          <td><%= link_to 'Edit', edit_members_path(member) %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<hr>

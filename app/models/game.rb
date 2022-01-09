@@ -2,10 +2,18 @@ class Game < ApplicationRecord
   has_many :participants, dependent: :destroy
   has_many :members, through: :participants
 
+  accepts_nested_attributes_for :participants
+
   before_save :set_uuid  
 
   def set_uuid
-    self.uuid = SecureRandom.hex
+    generate_code = ""
+    loop do
+      generate_code = SecureRandom.hex(3).upcase
+      game_code_exist = Game.find_by_uuid(generate_code).present?
+      break game_code_exist
+    end
+    self.uuid = generate_code
   end
 
   def update_participants_status

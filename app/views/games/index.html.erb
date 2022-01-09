@@ -1,0 +1,29 @@
+<%= content_for :header do %>
+  <h1>List of Games</h1>
+<% end %>
+
+<%= link_to 'Create Game', new_games_path %>
+<hr>
+
+<% if @games.blank? %>
+  <p>Do not have any games.</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <td>Id</td>
+        <td>Code</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td><%= game.id %></td>
+          <td><%= link_to game.uuid, game_path(uuid: game.uuid) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<hr>

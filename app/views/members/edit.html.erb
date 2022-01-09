@@ -1,4 +1,6 @@
-<h1>Edit Member</h1>
+<%= content_for :header do %>
+  <h1>Edit Member</h1>
+<% end %>
 
 <%= form_for :member, method: :put do |f| %>
   Name: <%= f.text_field :name %>
@@ -6,3 +8,5 @@
   Contact: <%= f.text_field :contact %>
   <%= f.submit 'Update' %>
 <% end %>
+
+<hr>
